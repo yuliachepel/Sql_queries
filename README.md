@@ -22,6 +22,6 @@ _cnum - уникальный номер назначенный каждому з
 _onum - уникальный номер данный каждому приобретению; amt - значение суммы приобретений; odate - дата приобретения; cnum - номер заказчика делающего приобретение (из таблицы Заказчиков); snum - номер продавца продающего приобретение (из таблицы Продавцов)_
 
 
-1. Создание базы данных и таблиц
-2. Заполнение таблиц
-3. Задачи по SQL
+1. [Создание базы данных и таблиц](https://github.com/yuliachepel/Sql_queries/blob/main/sql/create_db_and_tables.sql)
+2. [Заполнение таблиц](https://github.com/yuliachepel/Sql_queries/blob/main/sql/insert_values.sql)
+3. [Задачи по SQL](https://github.com/yuliachepel/Sql_queries/blob/main/sql/tasks.sql)
