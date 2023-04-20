@@ -1,8 +1,8 @@
-//Создание базы данных
+--Создание базы данных
 
 CREATE DATABASE test1;
 
-//Создание таблиц
+--Создание таблиц
 
 CREATE TABLE Salespeople
 (snum int PRIMARY KEY,

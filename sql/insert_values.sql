@@ -1,4 +1,4 @@
-//Заполнение таблиц
+--Заполнение таблиц
 
 INSERT Salespeople (snum, sname, city, comm)
 VALUES
