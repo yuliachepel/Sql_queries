@@ -11,7 +11,6 @@ city varchar (20),
 comm decimal (3,2)
 );
 
-
 CREATE TABLE Customers
 (cnum int PRIMARY KEY,
 cname varchar (20),
