@@ -184,5 +184,27 @@ SELECT * FROM salespeople s WHERE EXISTS (SELECT * FROM customers c WHERE c.city
 SELECT * FROM customers
 WHERE rating >= ANY(SELECT c.rating FROM customers c WHERE c.snum = (SELECT s.snum FROM salespeople s  WHERE s.sname = 'Serres'));
 
+--Напишите запрос, который бы выбирал все заказы с суммой больше, чем любая из сумм для заказчиков в San Jose
+
+SELECT * FROM orders o 
+WHERE amt > ALL (SELECT o2.amt FROM orders o2 WHERE o2.cnum = ANY (SELECT c.cnum  FROM customers c WHERE c.city = 'San Jose'));
+
+--Напишите предыдущий запрос с использованием MAX
+
+SELECT * FROM orders
+WHERE amt > (SELECT max(o.amt) FROM orders o, customers c
+where c.cnum = o.cnum AND c.city = 'San Jose');
+
+--Создайте объединение из двух запросов, которое показало бы имена, города, и оценки всех заказчиков. 
+--Те из них, которые имеют поле rating=200 и более, должны, кроме того, иметь слова "Высокий Рейтинг", 
+--а остальные должны иметь слова "Низкий Рейтинг".
+
+SELECT cname, city, rating, 
+IF(rating>=200, 'Высокий Рейтинг', 'Низкий Рейтинг') AS category
+FROM customers;
+
+
+
+
 
 
