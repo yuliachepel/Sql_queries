@@ -5,7 +5,7 @@
 В базе данных 3 таблицы
 
 ## Таблица salespeople
-
+![](https://github.com/yuliachepel/Sql_queries/blob/main/assets/salespeople.png)
 
 ## Таблица customers
 
