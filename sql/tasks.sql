@@ -218,7 +218,7 @@ GROUP BY o.cnum
 HAVING count(o.cnum) > 1)
 ORDER BY name;
 
---//с помощью неявного соединения таблице
+--//решение с помощью неявного соединения таблиц
 
 select o.snum AS num, count(s.sname) as Qty, s.sname as FName from orders o, salespeople s
 where o.snum = s.snum 
