@@ -203,8 +203,32 @@ SELECT cname, city, rating,
 IF(rating>=200, 'Высокий Рейтинг', 'Низкий Рейтинг') AS category
 FROM customers;
 
+--Напишите команду, которая бы вывела имена и номера каждого продавца и каждого заказчика, 
+--которые имеют больше чем один текущий заказ. Результат представьте в алфавитном порядке.
 
+-- //решение с помощью подзапросов
+SELECT s.sname AS name, s.snum AS num FROM salespeople s 
+WHERE s.snum IN (SELECT o.snum FROM orders o 
+GROUP BY o.snum
+HAVING count(o.snum) > 1)
+UNION
+SELECT c.cname AS name, c.cnum AS num FROM customers c
+WHERE c.cnum  IN (SELECT o.cnum  FROM orders o
+GROUP BY o.cnum
+HAVING count(o.cnum) > 1)
+ORDER BY name;
 
+--//с помощью неявного соединения таблице
 
+select o.snum AS num, count(s.sname) as Qty, s.sname as FName from orders o, salespeople s
+where o.snum = s.snum 
+group by o.snum
+having count(s.sname) > 1
+union
+select o.cnum AS num, count(c.cname) as Qty, c.cname as Fname from orders o, customers c
+where o.cnum = c.cnum
+group by o.cnum
+having count(c.cname) > 1
+Order by Fname;
 
 
