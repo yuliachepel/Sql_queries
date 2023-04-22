@@ -216,7 +216,7 @@ SELECT c.cname AS name, c.cnum AS num FROM customers c
 WHERE c.cnum  IN (SELECT o.cnum  FROM orders o
 GROUP BY o.cnum
 HAVING count(o.cnum) > 1)
-ORDER BY name;
+ORDER BY 1;
 
 --//решение с помощью неявного соединения таблиц
 
