@@ -220,7 +220,7 @@ ORDER BY name;
 
 --//решение с помощью неявного соединения таблиц
 
-select o.snum AS num, count(s.sname) as Qty, s.sname as FName from orders o, salespeople s
+select o.snum AS num, count(s.sname) as Qty, s.sname as Fname from orders o, salespeople s
 where o.snum = s.snum 
 group by o.snum
 having count(s.sname) > 1
