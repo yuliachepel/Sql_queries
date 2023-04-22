@@ -199,6 +199,15 @@ where c.cnum = o.cnum AND c.city = 'San Jose');
 --Те из них, которые имеют поле rating=200 и более, должны, кроме того, иметь слова "Высокий Рейтинг", 
 --а остальные должны иметь слова "Низкий Рейтинг".
 
+SELECT cname, city, rating, ' Высокий Рейтинг 'FROM customers   
+WHERE rating >=200
+UNION 
+SELECT cname, city, rating, ' Низкий рейтинг ' FROM customers 
+WHERE rating < 200
+ORDER BY 1; 
+
+
+--//другой способ без объединения
 SELECT cname, city, rating, 
 IF(rating>=200, 'Высокий Рейтинг', 'Низкий Рейтинг') AS category
 FROM customers;
