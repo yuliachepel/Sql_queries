@@ -240,4 +240,36 @@ group by o.cnum
 having count(c.cname) > 1
 Order by Fname;
 
+--Напишите команду, которая бы удалила все заказы заказчика Clemens из таблицы Заказов
 
+DELETE FROM orders o 
+WHERE o.cnum = (SELECT c.cnum FROM customers c WHERE c.cname = 'Clemens');
+
+--//шаги по восстановлению данных после предыдущего запроса
+INSERT orders
+VALUES 
+(3008, 4723, '2015-05-10', 2006, 1001),
+(3011, 9891.88, '2015-06-10', 2006, 1001);
+
+
+--Напишите команду, которая бы увеличила оценку всех заказчиков в Риме на 100
+
+UPDATE customers c
+SET c.rating = c.rating + 100
+WHERE c.city = 'Rome';
+
+--//возврат
+UPDATE customers c
+SET c.rating = c.rating - 100
+WHERE c.city = 'Rome';
+
+--Продавец Axelrod оставил компанию. Переназначьте его заказчиков продавцу Motika, задействовав имена. 
+
+UPDATE customers c
+SET c.snum = (SELECT s.snum FROM salespeople s WHERE s.sname = 'Monika')
+WHERE c.snum = (SELECT s.snum FROM salespeople s WHERE s.sname = 'Axelrod');
+
+--//возврат
+UPDATE customers c 
+SET c.snum = (SELECT s.snum FROM salespeople s WHERE s.sname = 'Axelrod')
+WHERE c.cnum = 2002;
